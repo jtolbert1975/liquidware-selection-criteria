@@ -1,0 +1,63 @@
+@use "@angular/material" as mat;
+@import "~@angular/material/theming";
+
+@include mat.core();
+
+$custom-primary: mat.define-palette($blue-palette, 900, A100, A700);
+$custom-accent: mat.define-palette($silver-palette, 100);
+$custom-warn: mat.define-palette($redish-palette, 900, A200, A400);
+
+$custom: mat-light-theme($my-custom-primary, $custom-accent, $custom-warn);
+// @use "@angular/material" as mat;
+$my-palette: mat.$blue-palette;
+
+@include angular-material-theme($custom);
+
+$blue-palette: (
+    50: #e3f2fd,
+    100: #bbdefb,
+    200: #90caf9,
+    300: #64b5f6,
+    400: #42a5f5,
+    500: #2196f3,
+    600: #1e88e5,
+    700: #1976d2,
+    800: #1565c0,
+    900: #0d47a1,
+    contrast: (
+      50: #b1bfca,
+      100: #82b1ff,
+      200: #448aff,
+      300: #2286c3,
+      400: #2979ff,
+      500: #0069c0,
+      600: #005cb2,
+      700: #2962ff,
+      800: #003c8f,
+      900: #002171,
+    ),
+  )
+  $silver-palette(
+    50: #fafafa,
+    100: #f5f5f5,
+    200: #efefef,
+    300: #e1e1e1,
+    400: #bebebe,
+    500: #9f9f9f,
+    600: #767676,
+    700: #626262,
+    800: #434343,
+    900: #222222,
+  )
+  $redish-palette(
+    50: #feebee,
+    100: #fdcdd2,
+    200: #ed999b,
+    300: #e37274,
+    400: #ed5252,
+    500: #f14138,
+    600: #e23737,
+    700: #d02d30,
+    800: #c32629,
+    900: #b41a1d,
+  );
