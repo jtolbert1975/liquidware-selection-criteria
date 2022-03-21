@@ -1,0 +1,21 @@
+<div>
+  <ngx-charts-bar-vertical
+    [view]="[1500, 600]"
+    [results]="chartData"
+    [xAxisLabel]="'Users'"
+    [legendTitle]="'Workload Rankings'"
+    [yAxisLabel]="'Score'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true"
+    (select)="onSelect($event)"
+  >
+  </ngx-charts-bar-vertical>
+  <div class="spinner-class" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <span><h3>LOADING</h3></span>
+  </div>
+</div>

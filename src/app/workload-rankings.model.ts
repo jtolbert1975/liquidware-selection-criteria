@@ -1,0 +1,35 @@
+export interface WorkLoadRankings {
+  end_date: string;
+  overall_ux_rating_avg: string;
+  login_delay_avg: string;
+  application_load_time_avg: string;
+  non_responding_apps: string;
+  cpu_used_percent: string;
+  cpu_queue_length_avg: string;
+  cpu_context_switching_avg: string;
+  memory_used_percent: string;
+  page_used_percent: string;
+  page_faults: string;
+  swap_page_faults: string;
+  gdi_objects: string;
+  gpu_percent_used: string;
+  total_io_bps: string;
+  total_iops: string;
+  disk_queue_avg: string;
+  disk_utilization_percent_avg: string;
+  disk_response_time_ms_avg: string;
+  disk_used_percent: string;
+  net_total_bps: string;
+  network_latency_ms_avg: string;
+  avg_inc_nrt: string;
+  failed_connects: string;
+  user_count: string;
+  node_count: string;
+  date_count: string;
+  score: string;
+  cid_cb_avg: string;
+  cid_seconds_avg: string;
+  cid_seconds: string;
+  up_time_percent: string;
+  record_count: string;
+}

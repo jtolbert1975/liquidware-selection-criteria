@@ -1,0 +1,32 @@
+.show-all-row {
+  display: flex;
+  flex-flow: row;
+  flex: 1 0 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px 0px;
+}
+
+.spinner-class {
+  display: flex;
+  flex-flow: column;
+  flex: 1 0 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0px;
+}
+
+th.mat-header-cell {
+  width: 41px;
+}
+.link {
+  color: #3f51b5;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+table.mat-table {
+  width: 100%;
+}

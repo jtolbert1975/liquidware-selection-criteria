@@ -1,0 +1,125 @@
+<!-- <span class="show-all-row">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="setShowAll()"
+    *ngIf="!showAll"
+  >
+    Show All Columns
+  </button>
+  <button mat-raised-button (click)="setShowAll()" *ngIf="showAll">
+    Hide Columns
+  </button>
+</span> -->
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <!-- Workload Ranking Column -->
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="score">
+      Workload Ranking
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.score }}</td>
+  </ng-container>
+  <!-- Users Column -->
+  <ng-container matColumnDef="user_name">
+    <th mat-header-cell *matHeaderCellDef>User</th>
+    <td mat-cell *matCellDef="let element">
+      <span
+        title="View User Details"
+        class="link"
+        (click)="goToDetials(element.user_name)"
+        >{{ element.user_name }}</span
+      >
+    </td>
+  </ng-container>
+  <!-- Users on Machine Column -->
+  <ng-container matColumnDef="user_count">
+    <th mat-header-cell *matHeaderCellDef>Users on Machine</th>
+    <td mat-cell *matCellDef="let element">{{ element.user_count }}</td>
+  </ng-container>
+
+  <!-- CPU Used % Column -->
+  <ng-container matColumnDef="cpu_used_percent">
+    <th mat-header-cell *matHeaderCellDef>CPU Used %</th>
+    <td mat-cell *matCellDef="let element">{{ element.cpu_used_percent }}</td>
+  </ng-container>
+  <!-- Context Switching Column -->
+  <ng-container matColumnDef="cpu_context_switching_avg">
+    <th mat-header-cell *matHeaderCellDef>Context Switching</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.cpu_context_switching_avg }}
+    </td>
+  </ng-container>
+  <!-- Memory Used % Column -->
+  <ng-container matColumnDef="memory_used_percent">
+    <th mat-header-cell *matHeaderCellDef>Memory Used %</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.memory_used_percent }}
+    </td>
+  </ng-container>
+  <!-- Pagefile Used % Column -->
+  <ng-container matColumnDef="page_used_percent">
+    <th mat-header-cell *matHeaderCellDef>Pagefile Used %</th>
+    <td mat-cell *matCellDef="let element">{{ element.page_used_percent }}</td>
+  </ng-container>
+  <!-- Soft Page Faults Column -->
+  <ng-container matColumnDef="page_faults">
+    <th mat-header-cell *matHeaderCellDef>Soft Page Faults</th>
+    <td mat-cell *matCellDef="let element">{{ element.page_faults }}</td>
+  </ng-container>
+  <!-- Hard Page Faults Column -->
+  <ng-container matColumnDef="swap_page_faults">
+    <th mat-header-cell *matHeaderCellDef>Hard Page Faults</th>
+    <td mat-cell *matCellDef="let element">{{ element.swap_page_faults }}</td>
+  </ng-container>
+
+  <!-- Disk IO KBs Column -->
+  <ng-container matColumnDef="total_io_bps">
+    <th mat-header-cell *matHeaderCellDef>Disk IO KBs</th>
+    <td mat-cell *matCellDef="let element">{{ element.total_io_bps }}</td>
+  </ng-container>
+  <!-- Disk IOPS Column -->
+  <ng-container matColumnDef="total_iops">
+    <th mat-header-cell *matHeaderCellDef>Disk IOPS</th>
+    <td mat-cell *matCellDef="let element">{{ element.total_iops }}</td>
+  </ng-container>
+
+  <!-- Network IO KBs  Column -->
+  <ng-container matColumnDef="net_total_bps">
+    <th mat-header-cell *matHeaderCellDef>Network IO KBs</th>
+    <td mat-cell *matCellDef="let element">{{ element.net_total_bps }}</td>
+  </ng-container>
+
+  <!-- Node Count Column -->
+  <ng-container matColumnDef="node_count">
+    <th mat-header-cell *matHeaderCellDef>Machine Count</th>
+    <td mat-cell *matCellDef="let element">{{ element.node_count }}</td>
+  </ng-container>
+
+  <!-- CID Records Avg Minutes Column -->
+  <ng-container matColumnDef="cid_seconds">
+    <th mat-header-cell *matHeaderCellDef>CID Records Total Hours</th>
+    <td mat-cell *matCellDef="let element">{{ element.cid_seconds }}</td>
+  </ng-container>
+  <!-- CID Records Avg Minutes Column -->
+  <ng-container matColumnDef="record_count">
+    <th mat-header-cell *matHeaderCellDef>CID Record Count</th>
+    <td mat-cell *matCellDef="let element">{{ element.record_count }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+</table>
+<mat-paginator
+  #paginator
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true"
+  [length]="totalSize"
+  [pageIndex]="currentPage"
+  (page)="pageEvent = handlePage($event)"
+  aria-label="Select page"
+>
+</mat-paginator>
+<div class="spinner-class" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+  <span><h3>LOADING</h3></span>
+</div>
